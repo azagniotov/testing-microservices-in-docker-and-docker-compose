@@ -1,0 +1,16 @@
+server:
+  address: 0.0.0.0
+  error:
+    include-exception: true
+    include-stacktrace: always
+
+service:
+  account:
+    host: http://0.0.0.0
+    port: 8882
+    resource: api/v1/accounts
+
+  reservation:
+    host: http://0.0.0.0
+    port: 8882
+    resource: api/v1/reservations

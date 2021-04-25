@@ -1,0 +1,16 @@
+server:
+  address: localhost
+  error:
+    include-exception: true
+    include-stacktrace: always
+
+service:
+  account:
+    host: http://localhost
+    port: 8882
+    resource: api/v1/accounts
+
+  reservation:
+    host: http://localhost
+    port: 8882
+    resource: api/v1/reservations

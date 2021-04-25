@@ -1,0 +1,70 @@
+plugins {
+    id "java"
+    id "idea"
+    id "org.springframework.boot" version "${springBootVersion}"
+    id "org.unbroken-dome.test-sets" version "3.0.1"
+}
+
+group = "io.github.azagniotov"
+version = "1.0.0-SNAPSHOT"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+repositories {
+    mavenLocal()
+    maven { url "https://repo.maven.apache.org/maven2" }
+    jcenter { url "https://jcenter.bintray.com" }
+}
+
+testSets {
+    componentTest {
+        dirName = 'component-test'
+    }
+}
+
+dependencies {
+    // https://stackoverflow.com/questions/57717042/do-we-need-io-spring-dependency-management-gradle-plugin-when-already-using-id
+    implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    implementation "org.springframework.boot:spring-boot-starter-jersey"
+    implementation "ch.qos.logback:logback-classic:1.2.3"
+    // https://github.com/googleapis/google-http-java-client/issues/167#issuecomment-571987053
+    implementation "com.google.http-client:google-http-client-apache-v2:1.38.1"
+
+
+    testImplementation "junit:junit:4.13.1"
+    testImplementation "org.mockito:mockito-core:3.3.3"
+
+    componentTestImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+}
+
+idea {
+    project {
+        jdkName = "1.8"
+        languageLevel = "1.8"
+        vcs = "Git"
+    }
+}
+
+bootRun {
+    jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
+    systemProperty 'spring.profiles.active', "${springProfile}"
+}
+
+springBoot {
+    mainClassName = "io.github.azagniotov.example.Main"
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+test.outputs.upToDateWhen { false }
+componentTest.outputs.upToDateWhen { false }

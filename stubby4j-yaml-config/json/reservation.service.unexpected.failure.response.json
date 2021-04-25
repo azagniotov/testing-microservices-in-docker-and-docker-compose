@@ -1,0 +1,5 @@
+{
+  "unexpectedJsonProperty": "403",
+  "unexpectedJsonPropertyDesc": "ValidationException",
+  "unexpectedJsonPropertyLongDesc": "Something long and descriptive about the ValidationException"
+}

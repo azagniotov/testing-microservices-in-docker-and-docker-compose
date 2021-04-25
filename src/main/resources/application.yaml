@@ -1,0 +1,16 @@
+spring:
+  jackson:
+    serialization:
+      indent_output: true
+
+service:
+  account:
+    host: https://some-real-host-name.com
+    port: 443
+    resource: api/v1/accounts
+
+
+  reservation:
+    host: https://some-real-host-name.com
+    port: 443
+    resource: api/v1/reservations
