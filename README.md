@@ -4,7 +4,7 @@ Testing Microservices using Docker (Docker Compose) with stubby4j, an HTTP stub
 
 ## Overview
 
-The current repository contains the code which accompanies the [tutorial] (TBD Testing Microservices in Docker and Docker Compose) blog post. The tutorial talks about testing microservice interactions in local environment where we are stubbing some of these microservices in stubby4j. 
+The current repository contains the code which accompanies the [Testing Microservices in Docker and Docker Compose](https://alexanderzagniotov.medium.com/testing-microservices-in-docker-and-docker-compose-4dd54b02bd1c) blog post. The tutorial talks about testing microservice interactions in local environment where we are stubbing some of these microservices in stubby4j. 
 
 Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
 
